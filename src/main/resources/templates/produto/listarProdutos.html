@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org" layout:decorator="@{layout}">
+<head>
+<title>Listar produtos</title>
+</head>
+<body layout:fragment="conteudo">
+
+	<div th:if="${sucesso}" class="callout success">
+		<h5 th:text="${sucesso}"></h5>
+	</div>
+
+	<h3>Listar produtos</h3>
+
+	<div th:if="${not #lists.isEmpty(produtos)}">
+		<table class="hover">
+			<thead>
+				<tr>
+					<th style="width: 40%">Nome</th>
+					<th>Estoque</th>
+					<th>Valor</th>
+					<th>Operações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="produto : ${produtos}">
+					<td th:text="${produto.nome}">- Nome do produto</td>
+					<td th:text="${produto.estoque}">Estoque do produto</td>
+					<td th:text="${produto.valor}">Valor do produto</td>
+					<td><a class="success button"
+						th:href="@{'/produtos/formAtualizar/' + ${produto.id}}">Editar</a>
+						<a class="alert button"
+						th:href="@{'/produtos/acaoExcluir/' + ${produto.id}}">Excluir</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br />
+	<div th:if="${#lists.isEmpty(produtos)}">
+		Nenhum produto encontrado, mas você pode <a
+			th:href="@{'/produtos/formCadastrar'}" class="button">Cadastrar</a>
+		um novo produto.
+	</div>
+</body>
+</html>

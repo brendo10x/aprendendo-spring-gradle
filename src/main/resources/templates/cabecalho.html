@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<!-- Cabeçalho -->
+	<div th:fragment="conteudo_cabecalho" class="top-bar">
+		<div class="row medium-8 large-7 ">
+			<div class="top-bar-left">
+				<ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
+					<li class="menu-text">Controle de estoque</li>
+					<li><a th:href="@{/}">Início</a></li>
+					<li class="has-submenu"><a href="#">Produtos</a>
+						<ul class="submenu menu vertical" data-submenu="data-submenu">
+							<li><a th:href="@{/produtos/listar}">Listar</a></li>
+							<li><a th:href="@{/produtos/formCadastrar}">Cadastrar</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<div class="top-bar-right">
+				<ul class="menu">
+					<li><form th:action="@{/logout}" method="post">
+							<span th:inline="text">Olá
+								[[${#httpServletRequest.remoteUser}]]!</span> <input type="submit"
+								class="alert hollow button" value="Sair"></input>
+						</form></li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

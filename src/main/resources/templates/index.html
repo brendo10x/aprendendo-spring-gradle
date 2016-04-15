@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org" layout:decorator="@{layout}">
+<head>
+<title>Página principal</title>
+</head>
+<body layout:fragment="conteudo">
+	<div class="row column text-center">
+		<h1>Olá, seja bem-vindo ao sistema de controle de estoque!</h1>
+		<p class="lead">Vamos começar a gerenciar os produtos?</p>
+		<a th:href="@{/produtos/formCadastrar/}" class="button large">Cadastrar</a>
+		ou <a th:href="@{/produtos/listar}" class="button large hollow">Listar</a>
+	</div>
+</body>
+</html>

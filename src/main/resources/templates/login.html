@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head lang="en">
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login - Controle de estoque</title>
+
+<!-- Css do Foundation -->
+<link rel="stylesheet" th:href="@{/foundation-6/css/foundation.css}" />
+<link rel="stylesheet" th:href="@{/foundation-6/css/app.css}" />
+
+</head>
+<body>
+
+	<div class="large-3 large-centered columns">
+		<div class="login-box">
+			<div class="row">
+				<div class="large-12 columns">
+					<h3>Login</h3>
+					<div th:if="${param.logout}" class="callout success">
+						<h5>Usuário saiu com sucesso!</h5>
+					</div>
+					<div th:if="${param.error}" class="callout alert">
+						<h5>Usuário ou senha inválido!</h5>
+					</div>
+					<form th:action="@{/login}" method="post" >
+						<div class="row">
+							<div class="large-12 columns">
+								<input type="text" name="username" placeholder="Usuário" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 columns">
+								<input type="password" name="password" placeholder="Senha" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="large-12 large-centered columns">
+								<input type="submit" class="button expand" value="Logar" />
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Rodapé -->
+	<div th:replace="rodape :: conteudo_rodape"></div>
+
+	<!-- Scripts do Foundation -->
+	<script th:src="@{/foundation-6/js/vendor/jquery.min.js}"></script>
+	<script th:src="@{/foundation-6/js/vendor/what-input.min.js}"></script>
+	<script th:src="@{/foundation-6/js/foundation.min.js}"></script>
+	<script th:src="@{/foundation-6/js/app.js}"></script>
+</body>
+</html>

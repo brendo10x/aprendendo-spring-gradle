@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org" layout:decorator="@{layout}">
+<head>
+<title>Editar produto</title>
+</head>
+<body layout:fragment="conteudo">
+
+	<div th:if="${sucesso}" class="callout success">
+		<h5 th:text="${sucesso}"></h5>
+	</div>
+	<h3>
+		Editar produto: <span th:text="${produto.nome}"></span>
+	</h3>
+
+	<form method="post" th:object="${produto}"
+		th:action="@{/produtos/acaoAtualizar}">
+
+		<input type="hidden" th:field="*{id}" />
+
+		<div class="row">
+			<div class="medium-6 columns">
+				<label>Nome<input type="text" th:field="*{nome}"></input> <span
+					class="form-error is-visible" th:if="${#fields.hasErrors('nome')}"
+					th:errors="*{nome}">Erro no nome</span>
+				</label>
+			</div>
+			<div class="medium-3 columns">
+				<label>Estoque <input type="number" th:field="*{estoque}"></input>
+					<span th:if="${#fields.hasErrors('estoque')}" class="form-error is-visible"
+					th:errors="*{estoque}">Erro no estoque</span>
+				</label>
+			</div>
+			<div class="medium-3 columns">
+				<label>Valor <input type="text" th:field="*{valor}"></input>
+					<span class="form-error is-visible" th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}">Erro
+						no valor</span>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+
+			<div class="medium-6 columns">
+				<label> Descrição <textarea th:field="*{descricao}"></textarea>
+					<span class="form-error is-visible"
+					th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}">Erro
+						na descrição</span>
+
+				</label>
+			</div>
+
+			<div class="medium-6 columns">
+				<label>Fornecedor <input type="text"
+					th:field="*{fornecedor}"></input> <span class="form-error is-visible"
+					th:if="${#fields.hasErrors('fornecedor')}"
+					th:errors="*{fornecedor}">Erro no fornecedor</span>
+				</label>
+			</div>
+		</div>
+		<button type="submit" class="success button">Atualizar</button>
+	</form>
+
+</body>
+</html>
